@@ -15,6 +15,11 @@ class CreateMedicineCategoriesTable extends Migration
     {
         Schema::create('medicine_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->tinyInteger('status')->default(0);
+            $table->foreignId('created_by_id')->nullable()->constrained('users')->onDelete('casecade')->onUpdate('cascade');
+            $table->foreignId('created_by_id')->nullable()->constrained('users')->onDelete('casecade')->onUpdate('cascade');
+           
             $table->timestamps();
         });
     }
